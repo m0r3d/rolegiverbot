@@ -8,7 +8,17 @@ const DBM = {};
 DBM.version = "1.5.10";
 
 const DiscordJS = DBM.DiscordJS = require('discord.js');
-
+const express = require('express');
+const keepalive = require('express-glitch-keepalive');
+const app = express();
+app.use(keepalive);
+app.get('/', (req, res) => {
+res.json('Бот запущен!');
+});
+app.get("/", (request, response) => {
+response.sendStatus(200);
+});
+app.listen(process.env.PORT);
 //---------------------------------------------------------------------
 // Bot
 // Contains functions for controlling the bot.
